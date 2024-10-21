@@ -1,0 +1,173 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Ativos de Rede</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        #app {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            font-size: 24px;
+            color: #343a40;
+        }
+        .search-box {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .search-box input {
+            width: 80%;
+            max-width: 400px;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        .device-list {
+            list-style: none;
+            padding: 0;
+        }
+        .device-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            margin: 5px 0;
+            background-color: #e9ecef;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+        .device-item:hover {
+            background-color: #d4edda;
+        }
+        .device-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .device-title {
+            font-weight: bold;
+            color: #495057;
+        }
+        .device-ip {
+            font-size: 14px;
+            color: #6c757d;
+        }
+        @media (max-width: 600px) {
+            .device-item {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+<body>
+  
+    <div id="app">
+      <a href="graficos1.html">Gráficos</a>
+        <a href="dvr.html">DVRs Atualizados</a>
+          <a href="cameras.html">Câmeras Atualizadas</a>
+          <a href="sw.html">Switchs</a>
+      
+        <header>
+            <h1>Controle de Ativos de Rede</h1>
+        </header>
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="Pesquisar dispositivos..." onkeyup="filterDevices()">
+        </div>
+        <ul class="device-list" id="device-list">
+            <li class="device-item">
+                <div class="device-info">
+                    <span class="device-title">3 4 Andar</span>
+                    <span class="device-ip">IP: 192.168.1.234</span>
+                    <span class="device-ip">Atualização: SIM</span>
+                </div>
+            
+        </ul>
+        <ul class="device-list" id="device-list">
+            <li class="device-item">
+                <div class="device-info">
+                    <span class="device-title">Neuro</span>
+                    <span class="device-ip">IP: 192.168.2.2</span>
+                    <span class="device-ip">Atualização: SIM</span>
+                </div>
+            
+        </ul>
+        <ul class="device-list" id="device-list">
+            <li class="device-item">
+                <div class="device-info">
+                    <span class="device-title">5 Andar</span>
+                    <span class="device-ip">IP: 192.168.1.233</span>
+                    <span class="device-ip">Atualização: SIM</span>
+                </div>
+            
+        </ul>
+        <ul class="device-list" id="device-list">
+            <li class="device-item">
+                <div class="device-info">
+                    <span class="device-title">1 Andar_lab_GO</span>
+                    <span class="device-ip">IP: 192.168.0.184</span>
+                    <span class="device-ip">Atualização: SIM</span>
+                </div>
+            
+        </ul>
+        <ul class="device-list" id="device-list">
+            <li class="device-item">
+                <div class="device-info">
+                    <span class="device-title">Sala Kleber</span>
+                    <span class="device-ip">IP: 192.168.0.14</span>
+                    <span class="device-ip">Atualização: SIM</span>
+                </div>
+            
+        </ul>
+        <ul class="device-list" id="device-list">
+            <li class="device-item">
+                <div class="device-info">
+                    <span class="device-title">CEOF</span>
+                    <span class="device-ip">IP: 192.168.6.214</span>
+                    <span class="device-ip">Atualização: SIM</span>
+                </div>
+            
+        </ul>
+    </div>
+
+    <script>
+        function filterDevices() {
+            const input = document.getElementById('search-input').value.toLowerCase();
+            const deviceItems = document.querySelectorAll('.device-item');
+
+            deviceItems.forEach(item => {
+                const title = item.querySelector('.device-title').textContent.toLowerCase();
+                const ip = item.querySelector('.device-ip').textContent.toLowerCase();
+
+                if (title.includes(input) || ip.includes(input)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
