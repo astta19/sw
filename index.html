@@ -1,0 +1,350 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Ativos de Rede</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        #app {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            font-size: 24px;
+            color: #343a40;
+        }
+        .search-box {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .search-box input {
+            width: 80%;
+            max-width: 400px;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        .device-list {
+            list-style: none;
+            padding: 0;
+        }
+        .device-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            margin: 5px 0;
+            background-color: #e9ecef;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+        .device-item:hover {
+            background-color: #d4edda;
+        }
+        .device-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .device-title {
+            font-weight: bold;
+            color: #495057;
+        }
+        .device-ip {
+            font-size: 14px;
+            color: #6c757d;
+        }
+        @media (max-width: 600px) {
+            .device-item {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+      <left><img src="Logo HC sem fundo (3).png" width="100px" height="100px"></left>
+      <img src="Logo Hotelaria para adesivos (1).png" width="100px" height="100px">
+        <header>
+            <h1>Controle de Ativos de Rede</h1>
+        </header>
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="Pesquisar dispositivos..." onkeyup="filterDevices()">
+        </div>
+        <ul class="device-list" id="device-list">
+            <li class="device-item">
+                <div class="device-info">
+                    <span class="device-title">Switch_1Andar_GO</span>
+                    <span class="device-ip">IP: 192.168.12.27</span>
+                    <span class="device-ip">Modelo: SG2404 mr l2+</span>
+                </div>
+            </li>
+            <li class="device-item">
+                <div class="device-info">
+                    <span class="device-title">Switch_1Andar_UETDI</span>
+                    <span class="device-ip">IP: 192.168.12.53</span>
+                    <span class="device-ip">Modelo: SG2404 poe</span>
+                </div>
+            </li>
+            <li class="device-item">
+                <div class="device-info">
+                    <span class="device-title">Switch_2Andar_UETDI</span>
+                    <span class="device-ip">IP: 192.168.12.52</span>
+                    <span class="device-ip">Modelo: SG2404 poe</span>
+                </div>
+            </li>
+            <li class="device-item">
+                <div class="device-info">
+                    <span class="device-title">Switch_3A Andar</span>
+                    <span class="device-ip">IP: 192.168.12.204</span>
+                    <span class="device-ip">Modelo: SG2404 poe max</span>
+                </div>
+            </li>
+
+            <li class="device-item">
+              <div class="device-info">
+                  <span class="device-title">Switch_3B Andar</span>
+                  <span class="device-ip">IP: 192.168.12.203</span>
+                  <span class="device-ip">Modelo: SG2404 poe max</span>
+              </div>
+          </li>
+          <li class="device-item">
+            <div class="device-info">
+                <span class="device-title">Switch_7Andar</span>
+                <span class="device-ip">IP: 192.168.12.205</span>
+                <span class="device-ip">Modelo: SG2404 poe</span>
+            </div>
+        </li>
+        <li class="device-item">
+          <div class="device-info">
+              <span class="device-title">Switch_balcao11</span>
+              <span class="device-ip">IP: 192.168.12.15</span>
+              <span class="device-ip">Modelo: SG2404 poe</span>
+          </div>
+      </li>
+      <li class="device-item">
+        <div class="device-info">
+            <span class="device-title">Switch_balcao6</span>
+            <span class="device-ip">IP: 192.168.12.17</span>
+            <span class="device-ip">Modelo: SG2404 poe</span>
+        </div>
+    </li>
+    <li class="device-item">
+      <div class="device-info">
+          <span class="device-title">Switch_blocog_1</span>
+          <span class="device-ip">IP: 192.168.12.57</span>
+          <span class="device-ip">Modelo: SG2404 poe</span>
+      </div>
+  </li>
+  <li class="device-item">
+    <div class="device-info">
+        <span class="device-title">Switch_blocog_2</span>
+        <span class="device-ip">IP: 192.168.12.56</span>
+        <span class="device-ip">Modelo: SG2404 poe</span>
+    </div>
+</li>
+<li class="device-item">
+  <div class="device-info">
+      <span class="device-title">Switch_caf</span>
+      <span class="device-ip">IP: 192.168.12.27</span>
+      <span class="device-ip">Modelo: SG2404 mr l2+</span>
+  </div>
+</li>
+<li class="device-item">
+  <div class="device-info">
+      <span class="device-title">Switch_caf1</span>
+      <span class="device-ip">IP: 192.168.12.27</span>
+      <span class="device-ip">Modelo: SG2404 mr l2+</span>
+  </div>
+</li>
+<li class="device-item">
+  <div class="device-info">
+      <span class="device-title">Switch_cci</span>
+      <span class="device-ip">IP: 192.168.12.0</span>
+      <span class="device-ip">Modelo: SG2404 poe</span>
+  </div>
+</li>
+<li class="device-item">
+  <div class="device-info">
+      <span class="device-title">Switch_central_material</span>
+      <span class="device-ip">IP: 192.168.12.27</span>
+      <span class="device-ip">Modelo: SG2404 mr l2+</span>
+  </div>
+</li>
+<li class="device-item">
+  <div class="device-info">
+      <span class="device-title">Switch_ceof</span>
+      <span class="device-ip">IP: 192.168.12.25</span>
+      <span class="device-ip">Modelo: SG2404 poe</span>
+  </div>
+</li>
+<li class="device-item">
+  <div class="device-info">
+      <span class="device-title">Switch_coleta_pneumo</span>
+      <span class="device-ip">IP: 192.168.12.27</span>
+      <span class="device-ip">Modelo: SG2404 mr l2+</span>
+  </div>
+</li>
+<li class="device-item">
+  <div class="device-info">
+      <span class="device-title">Switch_Endoscopia</span>
+      <span class="device-ip">IP: 192.168.12.28</span>
+      <span class="device-ip">Modelo: SG2404 mr l2+</span>
+  </div>
+</li>
+<li class="device-item">
+  <div class="device-info">
+      <span class="device-title">Switch_engenharia</span>
+      <span class="device-ip">IP: 192.168.12.27</span>
+      <span class="device-ip">Modelo: SG2404 mr l2+</span>
+  </div>
+</li>
+<li class="device-item">
+  <div class="device-info">
+      <span class="device-title">Switch_estacionamento1</span>
+      <span class="device-ip">IP: 192.168.12.--</span>
+      <span class="device-ip">Modelo: SG2404 poe</span>
+  </div>
+</li>
+<li class="device-item">
+  <div class="device-info">
+      <span class="device-title">Switch_estacionamento2</span>
+      <span class="device-ip">IP: 192.168.12.27</span>
+      <span class="device-ip">Modelo: SG2404 mr l2+</span>
+  </div>
+</li>
+<li class="device-item">
+  <div class="device-info">
+      <span class="device-title">Switch_estacionamento3</span>
+      <span class="device-ip">IP: 192.168.12.10</span>
+      <span class="device-ip">Modelo: SG2404 poe</span>
+  </div>
+</li>
+<li class="device-item">
+  <div class="device-info">
+      <span class="device-title">Switch_gecon</span>
+      <span class="device-ip">IP: 192.168.12.27</span>
+      <span class="device-ip">Modelo: SG2404 mr l2+</span>
+  </div>
+</li>
+<li class="device-item">
+  <div class="device-info">
+      <span class="device-title">Switch_guarita4</span>
+      <span class="device-ip">IP: 192.168.12.27</span>
+      <span class="device-ip">Modelo: SG2404 mr l2+</span>
+  </div>
+</li>
+<li class="device-item">
+  <div class="device-info">
+      <span class="device-title">Switch_onco_corredor</span>
+      <span class="device-ip">IP: 192.168.12.27</span>
+      <span class="device-ip">Modelo: SG2404 poe</span>
+  </div>
+</li>
+<li class="device-item">
+  <div class="device-info">
+      <span class="device-title">Switch_privativo</span>
+      <span class="device-ip">IP: 192.168.12.3</span>
+      <span class="device-ip">Modelo: SG2404 poe</span>
+  </div>
+</li>
+<li class="device-item">
+  <div class="device-info">
+      <span class="device-title">Switch_residuos</span>
+      <span class="device-ip">IP: 192.168.12.8</span>
+      <span class="device-ip">Modelo: SG2404 poe</span>
+  </div>
+</li>
+<li class="device-item">
+  <div class="device-info">
+      <span class="device-title">Switch_seloazul</span>
+      <span class="device-ip">IP: 192.168.12.11</span>
+      <span class="device-ip">Modelo: SG2404 poe</span>
+  </div>
+</li>
+<li class="device-item">
+  <div class="device-info">
+      <span class="device-title">Switch_transporte</span>
+      <span class="device-ip">IP: 192.168.12.26</span>
+      <span class="device-ip">Modelo: </span>
+  </div>
+</li>
+<li class="device-item">
+  <div class="device-info">
+      <span class="device-title">Switch_UETDI</span>
+      <span class="device-ip">IP: 192.168.12.27</span>
+      <span class="device-ip">Modelo: SG2404 mr l2+</span>
+  </div>
+</li>
+<li class="device-item">
+  <div class="device-info">
+      <span class="device-title">Switch_utilidade 10</span>
+      <span class="device-ip">IP: 192.168.12.51</span>
+      <span class="device-ip">Modelo: SG2404 poe</span>
+  </div>
+</li>
+<li class="device-item">
+  <div class="device-info">
+      <span class="device-title">Switch_utilidade 6</span>
+      <span class="device-ip">IP: 192.168.12.27</span>
+      <span class="device-ip">Modelo: SG2404 poe</span>
+  </div>
+</li>
+
+<li class="device-item">
+  <div class="device-info">
+      <span class="device-title">Switch_utilidades</span>
+      <span class="device-ip">IP: 192.168.12.27</span>
+      <span class="device-ip">Modelo: SG2404 mr l2+</span>
+  </div>
+</li>
+<li class="device-item">
+  <div class="device-info">
+      <span class="device-title">Switch_nutricao 1 e 2</span>
+      <span class="device-ip">IP: 192.168.12.101</span>
+      <span class="device-ip">Modelo: SG2216 tp link</span>
+  </div>
+</li>
+        </ul>
+    </div>
+
+    <script>
+        function filterDevices() {
+            const input = document.getElementById('search-input').value.toLowerCase();
+            const deviceItems = document.querySelectorAll('.device-item');
+
+            deviceItems.forEach(item => {
+                const title = item.querySelector('.device-title').textContent.toLowerCase();
+                const ip = item.querySelector('.device-ip').textContent.toLowerCase();
+
+                if (title.includes(input) || ip.includes(input)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
